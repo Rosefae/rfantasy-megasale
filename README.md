@@ -1,6 +1,6 @@
-# eleventy-starter-template
+# rfantasy-megasale
 
-My 11ty starter template because I need one.
+Page listing all the books for the r/fantasy MegaSale because Reddit borked
 
 `npm start` and `localhost:8080`.
 
@@ -23,6 +23,7 @@ My 11ty starter template because I need one.
 ```
 src/
 |- _assets/
+|- _data/
 |- _scripts/
 |- _styles/
    |- _normalize.scss

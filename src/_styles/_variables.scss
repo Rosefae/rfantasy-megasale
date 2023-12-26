@@ -1,0 +1,15 @@
+$bp-l: 1300px;
+$bp-m: 1024px;
+$bp-s: 768px;
+
+:root {
+	--bg-color: #fff;
+	--text-color: #333;
+
+	@media (prefers-color-scheme: dark) {
+		--bg-color: #333;
+		--text-color: #fff;
+	}
+}
+
+$markets: "com", "uk", "de", "fr", "es", "it", "nl", "jp", "br", "ca", "mx", "au", "in";
