@@ -3,65 +3,65 @@ tags: index
 ---
 
 <!doctype html>
-<html>
-	<head>
+<html lang="en">
+    <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta charset="UTF-8">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
-		<link rel="stylesheet" type="text/css" href="./_styles/styles.css">
-		<title>r/fantasy MegaSale 2023</title>
-	</head>
-	<body>
-		<div class="container">
-			<h1>r/fantasy MegaSale 2023</h1>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="./_styles/styles.css">
+        <title>r/fantasy MegaSale 2024</title>
+    </head>
+    <body>
+        <div class="container">
+            <h1>r/fantasy MegaSale 2024</h1>
 
-			<div class="marketplace-select">
-				<label>
-					<span class="marketplace-select__label">Filter by Marketplace</span>
-					<select class="marketplace-select__select">
-						<option value="all">Show All</option>
-						{%- for market in marketplaces -%}
-						<option value="{{market}}">Amazon.{{market}}</option>
-						{%- endfor -%}
-					</select>
-				</label>
-				<button class="marketplace-select__go" type="button">Go</button>
-			</div>
+            <div class="marketplace-select">
+                <label>
+                    <span class="marketplace-select__label">Filter by Amazon Marketplace</span>
+                    <select class="marketplace-select__select">
+                        <option value="all">Show All</option>
+                        {%- for market in marketplaces -%}
+                        <option value="{{market}}">Amazon.{{market}}</option>
+                        {%- endfor -%}
+                    </select>
+                </label>
+                <button class="marketplace-select__go" type="button">Go</button>
+            </div>
 
-			<ul class="books">
-				{%- for book in processed -%}
-				<li class="book">
-					<div class="book__image">
-						<img src="https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN={{book.asin}}&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=SL250" alt=" " aria-hidden="true" />
-					</div>
-					<div class="book__title">
-						{{book.title}}
-					</div>
-					<div class="book__author">
-						{{book.author}}
-					</div>
-					<ul class="book__links">
-						{%- for market in book.marketplaces -%}
-						<li class="book__link" data-market="{{market.marketplace}}">
-							<a href="{{market.url}}">
-								<span class="sr-only">Get {{book.title}} on </span>
-								Amazon{{market.marketplace}}
-							</a>
-						</li>
-						{%- endfor -%}
-					</ul>
-				</li>
-				{%- endfor -%}
-			</ul>
-		</div>
+            <ul class="books">
+                {%- for book in processed -%}
+                <li class="book">
+                    <div class="book__image">
+                        <img src="https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&MarketPlace=US&ASIN={{book.asin}}&ServiceVersion=20070822&ID=AsinImage&WS=1&Format=SL250" alt=" " aria-hidden="true" />
+                    </div>
+                    <div class="book__title">
+                        {{book.title}}
+                    </div>
+                    <div class="book__author">
+                        {{book.author}}
+                    </div>
+                    <ul class="book__links">
+                        {%- for market in book.marketplaces -%}
+                        <li class="book__link" data-market="{{market.marketplace}}">
+                            <a href="{{market.url}}">
+                                <span class="sr-only">Get {{book.title}} on </span>
+                                Amazon{{market.marketplace}}
+                            </a>
+                        </li>
+                        {%- endfor -%}
+                    </ul>
+                </li>
+                {%- endfor -%}
+            </ul>
+        </div>
 
-		<button class="back-to-top" type="button">
-			<span class="sr-only">Back to Top</span>
-			<span aria-hidden="true">⬆️</span>
-		</button>
+        <button class="back-to-top" type="button">
+            <span class="sr-only">Back to Top</span>
+            <span aria-hidden="true">⬆️</span>
+        </button>
 
-		<script type="text/javascript" src="./_scripts/script.js"></script>
-	</body>
+        <script type="text/javascript" src="./_scripts/script.js"></script>
+    </body>
 </html>

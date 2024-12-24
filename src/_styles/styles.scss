@@ -1,5 +1,5 @@
-@import 'normalize';
-@import 'variables';
+@use 'normalize';
+@use 'variables';
 
 // Utility
 .sr-only {
@@ -120,15 +120,15 @@ h1 {
 	grid-gap: 2rem;
 	grid-template-columns: 1fr;
 
-	@media screen and (min-width: $bp-s) {
+	@media screen and (min-width: variables.$bp-s) {
 		grid-template-columns: repeat(2, 1fr);
 	}
 
-	@media screen and (min-width: $bp-m) {
+		@media screen and (min-width: variables.$bp-m) {
 		grid-template-columns: repeat(3, 1fr);
 	}
 
-	@media screen and (min-width: $bp-l) {
+		@media screen and (min-width: variables.$bp-l) {
 		grid-template-columns: repeat(4, 1fr);
 	}
 
@@ -138,7 +138,7 @@ h1 {
 		}
 	}
 
-	@each $market in $markets {
+		@each $market in variables.$markets {
 		&[data-show="#{$market}"] {
 			.book__link[data-market=".#{$market}"] {
 				display: block;

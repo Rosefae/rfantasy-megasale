@@ -1,7 +1,7 @@
 {
-  "name": "eleventy-starter-template",
+  "name": "rfantasy-megasale-page",
   "version": "1.0.0",
-  "description": "My 11ty starter template because I need one",
+  "description": "A page to more easily browse the books on sale for the annual r/fantasy megasale",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -14,25 +14,28 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rosefae/eleventy-starter-template.git"
+    "url": "git+https://github.com/Rosefae/rfantasy-megasale.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rosefae/eleventy-starter-template/issues"
+    "url": "https://github.com/Rosefae/rfantasy-megasale/issues"
   },
-  "homepage": "https://github.com/Rosefae/eleventy-starter-template#readme",
+  "homepage": "https://github.com/Rosefae/rfantasy-megasale#readme",
   "devDependencies": {
-    "@11ty/eleventy": "^2.0.1",
+    "@11ty/eleventy": "^3.0.0",
     "autoprefixer": "^10.4.14",
-    "concurrently": "^8.2.0",
-    "gulp": "^4.0.2",
+    "concurrently": "^9.1.0",
+    "gulp": "^5.0.0",
     "gulp-clean-css": "^4.3.0",
-    "gulp-postcss": "^9.0.1",
+    "gulp-postcss": "^10.0.0",
     "gulp-sass": "^5.1.0",
     "gulp-sourcemaps": "^3.0.0",
     "postcss": "^8.4.24",
     "sass": "^1.63.4"
+  },
+  "dependencies": {
+    "csvtojson": "^2.0.10"
   }
 }

@@ -1,6 +1,6 @@
 # rfantasy-megasale
 
-Page listing all the books for the r/fantasy MegaSale because Reddit borked
+Page listing all the books for the r/fantasy MegaSale because Reddit posts have limits, and Google Sheets is not a good browsing experience.
 
 `npm start` and `localhost:8080`.
 
