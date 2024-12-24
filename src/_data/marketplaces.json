@@ -1,15 +1,54 @@
 [
-	"com",
-	"uk",
-	"de",
-	"fr",
-	"es",
-	"it",
-	"nl",
-	"jp",
-	"br",
-	"ca",
-	"mx",
-	"au",
-	"in"
+	{
+		"urlSuffix": ".com",
+		"countryCode": "us"
+	},
+	{
+		"urlSuffix": ".co.uk",
+		"countryCode": "gb"
+	},
+	{
+		"urlSuffix": ".de",
+		"countryCode": "de"
+	},
+	{
+		"urlSuffix": ".fr",
+		"countryCode": "fr"
+	},
+	{
+		"urlSuffix": ".es",
+		"countryCode": "es"
+	},
+	{
+		"urlSuffix": ".it",
+		"countryCode": "it"
+	},
+	{
+		"urlSuffix": ".nl",
+		"countryCode": "nl"
+	},
+	{
+		"urlSuffix": ".jp",
+		"countryCode": "jp"
+	},
+	{
+		"urlSuffix": ".com.br",
+		"countryCode": "br"
+	},
+	{
+		"urlSuffix": ".ca",
+		"countryCode": "ca"
+	},
+	{
+		"urlSuffix": ".com.mx",
+		"countryCode": "mx"
+	},
+	{
+		"urlSuffix": ".com.au",
+		"countryCode": "au"
+	},
+	{
+		"urlSuffix": ".in",
+		"countryCode": "in"
+	}
 ]

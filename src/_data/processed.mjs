@@ -24,7 +24,6 @@ export default async function () {
         ],
         checkType: true
     }).fromFile(rawCsvPath);
-    console.log(processed);
 
     return processed;
 }
