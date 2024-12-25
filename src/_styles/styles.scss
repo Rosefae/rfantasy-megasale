@@ -42,8 +42,16 @@ h1 {
     font-size: 3rem;
 }
 
-.marketplace-select {
+.filters {
     margin-bottom: 2rem;
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}
+
+.marketplace-select {
+    display: block;
 
     &__label {
         font-weight: 800;

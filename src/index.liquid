@@ -17,9 +17,11 @@ tags: index
         <div class="container">
             <h1>r/fantasy MegaSale 2024</h1>
 
-            <div class="marketplace-select">
-                <label>
-                    <span class="marketplace-select__label">Filter by Amazon Marketplace</span>
+            <form class="filters">
+                <h2>Filters</h2>
+
+                <label class="marketplace-select">
+                    <span class="marketplace-select__label">Show Amazon Marketplace</span>
                     <select class="marketplace-select__select">
                         <option value="all">Show All</option>
                         {%- for market in marketplaces -%}
@@ -27,12 +29,39 @@ tags: index
                         {%- endfor -%}
                     </select>
                 </label>
-                <button class="marketplace-select__go" type="button">Go</button>
-            </div>
+
+                <fieldset class="filters__checkboxes">
+                    <legend>Filter by Availability</legend>
+                    <label class="filters__checkbox">
+                        <input type="checkbox" name="filter-wide" value="wide">
+                        <span>Wide</span>
+                    </label>
+                    <label class="filters__checkbox">
+                        <input type="checkbox" name="filter-direct" value="direct">
+                        <span>Direct</span>
+                    </label>
+                    <label class="filters__checkbox">
+                        <input type="checkbox" name="filter-intl" value="intl">
+                        <span>International</span>
+                    </label>
+                </fieldset>
+                
+                <button class="filters__go" type="button">Go</button>
+            </form>
 
             <ul class="books">
                 {%- for book in processed -%}
-                <li class="book">
+                <li class="book"
+                    {% if book.wide %}
+                        data-wide
+                    {% endif %}
+                    {% if book.directLink != "" %}
+                        data-direct
+                    {% endif %}
+                    {% if book.intl %}
+                        data-intl
+                    {% endif %}
+                >
                     <div class="book__image">
                         <img src="https://images.amazon.com/images/P/{{book.asin}}.01._LZZZZZZZ_.jpg" alt=" " aria-hidden="true" />
                     </div>
@@ -42,6 +71,16 @@ tags: index
                     <div class="book__author">
                         {{book.author}}
                     </div>
+                    <div class="book__tags">
+                        {%- if book.spfboCohort != "" -%}
+                            <span class="book__tag">{{book.spfboCohort}}</span>
+                        {%- endif -%}
+                    </div>
+                    {%- if book.directLink != "" -%}
+                    <div class="book__direct-link">
+                        <a href="{{book.directLink}}">Buy Direct</a>
+                    </div>
+                    {%- endif -%}
                     <ul class="book__links">
                         {%- for market in marketplaces -%}
                         <li class="book__link" data-market="{{market.countryCode}}">

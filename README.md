@@ -4,6 +4,13 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 
 `npm start` and `localhost:8080`.
 
+## Todo:
+- Styling for SPFBO tags
+- Styling for direct sale link
+- Function + styling for filters
+- Fix Amazon images issue
+- Add some notes in the readme for myself for next year
+
 ## Scripts
 
 `npm run serve`: Runs `eleventy --serve`. Compiles templates in `src` into `dist`, as well as copying over `_assets` and `_scripts` as-is. Also watches and serves the site to `localhost:8080`.
