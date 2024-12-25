@@ -10,16 +10,32 @@ function backToTop(){
 
 // Toggle marketplaces
 
-var filterMarketBtn = document.querySelector('.marketplace-select__go');
-var filterMarketSelect = document.querySelector('.marketplace-select__select');
+var filtersBtn = document.querySelector('[data-filters-go]');
+var filterMarketSelect = document.querySelector('[data-filters-marketplace]');
+var filterWide = document.querySelector('input[data-filters-wide]');
+var filterDirect = document.querySelector('input[data-filters-direct]');
+var filterIntl = document.querySelector('input[data-filters-intl]');
 var booksList = document.querySelector('.books');
-filterMarketBtn.addEventListener('click', function(){
-    var value = filterMarketSelect.value;
 
-    if (value == "all") {
-        booksList.removeAttribute("data-show");
-        return;
+function toggleFilter(checkbox, dataAttribute) {
+    if (checkbox.checked == true) {
+        booksList.setAttribute(dataAttribute, true);
+    }
+    else {
+        booksList.removeAttribute(dataAttribute);
+    }
+}
+
+filtersBtn.addEventListener('click', function () {
+    var marketplaceValue = filterMarketSelect.value;
+    if (marketplaceValue == "all") {
+        booksList.removeAttribute("data-show-market");
+    }
+    else {
+        booksList.setAttribute("data-show-market", marketplaceValue);
     }
 
-    booksList.setAttribute("data-show", value);
+    toggleFilter(filterWide, 'data-filter-by-wide');
+    toggleFilter(filterDirect, 'data-filter-by-direct');
+    toggleFilter(filterIntl, 'data-filter-by-intl');
 });

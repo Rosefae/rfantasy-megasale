@@ -5,9 +5,6 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 `npm start` and `localhost:8080`.
 
 ## Todo:
-- Styling for SPFBO tags
-- Styling for direct sale link
-- Function + styling for filters
 - Fix Amazon images issue
 - Add some notes in the readme for myself for next year
 

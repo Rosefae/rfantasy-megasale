@@ -22,7 +22,7 @@ tags: index
 
                 <label class="marketplace-select">
                     <span class="marketplace-select__label">Show Amazon Marketplace</span>
-                    <select class="marketplace-select__select">
+                    <select class="marketplace-select__select" data-filters-marketplace>
                         <option value="all">Show All</option>
                         {%- for market in marketplaces -%}
                         <option value="{{market.countryCode}}">Amazon{{market.urlSuffix}}</option>
@@ -31,22 +31,22 @@ tags: index
                 </label>
 
                 <fieldset class="filters__checkboxes">
-                    <legend>Filter by Availability</legend>
+                    <legend class="sr-only">Filter by Availability</legend>
                     <label class="filters__checkbox">
-                        <input type="checkbox" name="filter-wide" value="wide">
-                        <span>Wide</span>
+                        <input type="checkbox" name="filter-wide" data-filters-wide>
+                        <span>Available wide</span>
                     </label>
                     <label class="filters__checkbox">
-                        <input type="checkbox" name="filter-direct" value="direct">
-                        <span>Direct</span>
+                        <input type="checkbox" name="filter-direct" data-filters-direct>
+                        <span>Has direct buy link</span>
                     </label>
                     <label class="filters__checkbox">
-                        <input type="checkbox" name="filter-intl" value="intl">
-                        <span>International</span>
+                        <input type="checkbox" name="filter-intl" data-filters-intl>
+                        <span>On sale on international Amazon</span>
                     </label>
                 </fieldset>
                 
-                <button class="filters__go" type="button">Go</button>
+                <button class="filters__go" type="button" data-filters-go>Go</button>
             </form>
 
             <ul class="books">
@@ -77,8 +77,10 @@ tags: index
                         {%- endif -%}
                     </div>
                     {%- if book.directLink != "" -%}
-                    <div class="book__direct-link">
-                        <a href="{{book.directLink}}">Buy Direct</a>
+                    <div class="book__direct-link book__link">
+                        <a href="{{book.directLink}}">
+                            <span class="book__link-text">Buy <span class="sr-only">{{book.title}} </span>Direct from Author</span>
+                        </a>
                     </div>
                     {%- endif -%}
                     <ul class="book__links">

@@ -44,14 +44,31 @@ h1 {
 
 .filters {
     margin-bottom: 2rem;
+    border: 2px var(--text-color) solid;
+    padding: 0 1rem 1rem;
 
     h2 {
         font-size: 1.2rem;
+        margin: -1.5em auto 0;
+        background-color: var(--bg-color);
+        width: fit-content;
+        padding: 0.5em;
+    }
+
+    &__checkboxes {
+        border: none;
+        padding: 0;
+    }
+
+    &__checkbox {
+        display: inline-block;
+        margin: 0 0.5em 0.5em;
     }
 }
 
 .marketplace-select {
     display: block;
+    margin-bottom: 1rem;
 
     &__label {
         font-weight: 800;
@@ -110,6 +127,29 @@ h1 {
         font-weight: 800;
     }
 
+    &__tags {
+        margin-bottom: 0.7rem;
+
+        &:empty {
+            margin-bottom: 0;
+        }
+    }
+
+    &__tag {
+        display: inline-block;
+        font-size: 0.8rem;
+        font-weight: 800;
+        background-color: var(--text-color);
+        color: var(--bg-color);
+        padding: 0.4em;
+        border-radius: 0.2em;
+        line-height: 1;
+    }
+
+    &__direct-link {
+        font-weight: 800;
+    }
+
     &__links {
         list-style: none;
         padding: 0;
@@ -122,6 +162,10 @@ h1 {
             color: inherit;
             text-decoration: none;
             line-height: 2em;
+
+            &:visited {
+                color: inherit;
+            }
         }
 
         img {
@@ -139,6 +183,7 @@ h1 {
     display: grid;
     grid-gap: 2rem;
     grid-template-columns: 1fr;
+    padding: 0;
 
     @media screen and (min-width: variables.$bp-s) {
         grid-template-columns: repeat(2, 1fr);
@@ -152,17 +197,39 @@ h1 {
         grid-template-columns: repeat(4, 1fr);
     }
 
-    &[data-show] {
+    &[data-show-market] {
         .book__link {
             display: none;
+        }
+
+        .book__direct-link {
+            display: block;
         }
     }
 
     @each $market in variables.$markets {
-        &[data-show="#{$market}"] {
+        &[data-show-market="#{$market}"] {
             .book__link[data-market="#{$market}"] {
                 display: block;
             }
+        }
+    }
+
+    &[data-filter-by-wide] {
+        .book:not([data-wide]) {
+            display: none;
+        }
+    }
+
+    &[data-filter-by-direct] {
+        .book:not([data-direct]) {
+            display: none;
+        }
+    }
+
+    &[data-filter-by-intl] {
+        .book:not([data-intl]) {
+            display: none;
         }
     }
 }
