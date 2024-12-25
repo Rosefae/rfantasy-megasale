@@ -89,7 +89,7 @@ tags: index
                     {%- endif -%}
                     <ul class="book__links">
                         {%- for market in marketplaces -%}
-                        <li class="book__link" data-market="{{market.countryCode}}">
+                        <li class="book__link book__link-zon" data-market="{{market.countryCode}}">
                             <a href="https://www.amazon{{market.urlSuffix}}/dp/{{book.asin}}">
                                 <span class="sr-only">Get {{book.title}} on </span>
                                 <span class="book__link-text">Amazon{{market.urlSuffix}}</span>
@@ -97,6 +97,46 @@ tags: index
                             </a>
                         </li>
                         {%- endfor -%}
+                        {%- if book.koboLink != "" -%}
+                        <li class="book__link book__link-wide">
+                            <a href="{{book.koboLink}}">
+                                <span class="sr-only">Get {{book.title}} on </span>
+                                <span class="book__link-text">Kobo</span>
+                            </a>
+                        </li>
+                        {%- endif -%}
+                        {%- if book.smashwordsLink != "" -%}
+                        <li class="book__link book__link-wide">
+                            <a href="{{book.smashwordsLink}}">
+                                <span class="sr-only">Get {{book.title}} on </span>
+                                <span class="book__link-text">Smashwords</span>
+                            </a>
+                        </li>
+                        {%- endif -%}
+                        {%- if book.googleLink != "" -%}
+                        <li class="book__link book__link-wide">
+                            <a href="{{book.googleLink}}">
+                                <span class="sr-only">Get {{book.title}} on </span>
+                                <span class="book__link-text">Google Play Store</span>
+                            </a>
+                        </li>
+                        {%- endif -%}
+                        {%- if book.appleLink != "" -%}
+                        <li class="book__link book__link-wide">
+                            <a href="{{book.appleLink}}">
+                                <span class="sr-only">Get {{book.title}} on </span>
+                                <span class="book__link-text">Apple Books</span>
+                            </a>
+                        </li>
+                        {%- endif -%}
+                        {%- if book.bnLink != "" -%}
+                        <li class="book__link book__link-wide">
+                            <a href="{{book.bnLink}}">
+                                <span class="sr-only">Get {{book.title}} at </span>
+                                <span class="book__link-text">Barnes & Noble</span>
+                            </a>
+                        </li>
+                        {%- endif -%}
                     </ul>
                 </li>
                 {%- endfor -%}

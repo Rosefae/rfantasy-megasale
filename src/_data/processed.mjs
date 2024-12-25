@@ -22,7 +22,12 @@ export default async function () {
             'directLink',
             'intlBooks',
             'intl',
-            'imgLink'
+            'imgLink',
+            'koboLink',
+            'smashwordsLink',
+            'googleLink',
+            'appleLink',
+            'bnLink'
         ],
         checkType: true
     }).fromFile(rawCsvPath);

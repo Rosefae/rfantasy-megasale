@@ -198,18 +198,14 @@ h1 {
     }
 
     &[data-show-market] {
-        .book__link {
+        .book__link-zon {
             display: none;
-        }
-
-        .book__direct-link {
-            display: block;
         }
     }
 
     @each $market in variables.$markets {
         &[data-show-market="#{$market}"] {
-            .book__link[data-market="#{$market}"] {
+            .book__link-zon[data-market="#{$market}"] {
                 display: block;
             }
         }

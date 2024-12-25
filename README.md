@@ -4,9 +4,8 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 
 `npm start` and `localhost:8080`.
 
-## Todo:
-- Fix Amazon images issue
-- Add some notes in the readme for myself for next year
+## Next year:
+- Probably worth it to get an API key and pull the images properly
 
 ## Scripts
 
