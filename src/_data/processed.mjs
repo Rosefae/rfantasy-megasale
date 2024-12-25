@@ -20,7 +20,9 @@ export default async function () {
             'spfboCohort',
             'direct',
             'directLink',
-            'intl'
+            'intlBooks',
+            'intl',
+            'imgLink'
         ],
         checkType: true
     }).fromFile(rawCsvPath);
