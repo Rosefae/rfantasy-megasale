@@ -4,32 +4,8 @@
 		"countryCode": "us"
 	},
 	{
-		"urlSuffix": ".co.uk",
-		"countryCode": "gb"
-	},
-	{
-		"urlSuffix": ".de",
-		"countryCode": "de"
-	},
-	{
-		"urlSuffix": ".fr",
-		"countryCode": "fr"
-	},
-	{
-		"urlSuffix": ".es",
-		"countryCode": "es"
-	},
-	{
-		"urlSuffix": ".it",
-		"countryCode": "it"
-	},
-	{
-		"urlSuffix": ".nl",
-		"countryCode": "nl"
-	},
-	{
-		"urlSuffix": ".jp",
-		"countryCode": "jp"
+		"urlSuffix": ".com.au",
+		"countryCode": "au"
 	},
 	{
 		"urlSuffix": ".com.br",
@@ -40,15 +16,39 @@
 		"countryCode": "ca"
 	},
 	{
-		"urlSuffix": ".com.mx",
-		"countryCode": "mx"
+		"urlSuffix": ".de",
+		"countryCode": "de"
 	},
 	{
-		"urlSuffix": ".com.au",
-		"countryCode": "au"
+		"urlSuffix": ".es",
+		"countryCode": "es"
+	},
+	{
+		"urlSuffix": ".fr",
+		"countryCode": "fr"
+	},
+	{
+		"urlSuffix": ".co.uk",
+		"countryCode": "gb"
 	},
 	{
 		"urlSuffix": ".in",
 		"countryCode": "in"
+	},
+	{
+		"urlSuffix": ".it",
+		"countryCode": "it"
+	},
+	{
+		"urlSuffix": ".jp",
+		"countryCode": "jp"
+	},
+	{
+		"urlSuffix": ".com.mx",
+		"countryCode": "mx"
+	},
+	{
+		"urlSuffix": ".nl",
+		"countryCode": "nl"
 	}
 ]
