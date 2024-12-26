@@ -7,6 +7,7 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 ## Next year:
 - Probably worth it to get an API key and pull the images properly
 - Lazy load the images?
+- Series pages are causing problems -- use ASIN for first book in series intead of the series page next time
 
 ## Scripts
 
