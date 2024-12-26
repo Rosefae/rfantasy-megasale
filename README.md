@@ -6,6 +6,7 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 
 ## Next year:
 - Probably worth it to get an API key and pull the images properly
+- Lazy load the images?
 
 ## Scripts
 
