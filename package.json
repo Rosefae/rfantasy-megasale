@@ -10,7 +10,8 @@
     "oncescss": "gulp scss",
     "scss": "gulp",
     "prodscss": "gulp prodscss",
-    "start": "concurrently -k -c green.dim,cyan.dim -s first \"npm:serve\" \"npm:scss\""
+    "start": "concurrently -k -c green.dim,cyan.dim -s first \"npm:serve\" \"npm:scss\"",
+    "build": "npm run once && npm run prodscss"
   },
   "repository": {
     "type": "git",
