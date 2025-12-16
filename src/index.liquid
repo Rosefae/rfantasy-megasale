@@ -11,145 +11,158 @@ tags: index
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./_styles/styles.css">
-        <title>r/fantasy MegaSale 2024</title>
+        <title>{{meta.title}}</title>
 
-        <meta name="title" content="r/fantasy MegaSale 2024">
-        <meta name="description" content="This is the unofficial listing page for the 2024 r/fantasy MegaSale. It was made by Y. R. Liu, with info collected by Delilah Waan, Niranjan, and Joanna Maciejewska.">
+        <meta name="title" content="{{meta.title}}">
+        <meta name="description" content="{{meta.desc}}">
     </head>
     <body>
         <div class="container">
-            <h1>r/fantasy MegaSale 2024</h1>
+            <header>
+                <h1>{{meta.title}}</h1>
+                <div class="subheading">
+                    <p class="subheading__date">Dec 26-27</p>
+                    <p>All books 99&cent; or free. Each sale or download contributes towards charity.</p>
+                </div>
+            </header>
 
-            <form class="filters">
-                <h2>Filters</h2>
+            <aside>
+                <form class="filters">
+                    <h2>Filters</h2>
 
-                <label class="marketplace-select">
-                    <span class="marketplace-select__label">Show Amazon Marketplace</span>
-                    <select class="marketplace-select__select" data-filters-marketplace>
-                        <option value="all">Show All</option>
-                        {%- for market in marketplaces -%}
-                        <option value="{{market.countryCode}}">Amazon{{market.urlSuffix}}</option>
-                        {%- endfor -%}
-                    </select>
-                </label>
-
-                <fieldset class="filters__checkboxes">
-                    <legend class="sr-only">Filter by Availability</legend>
-                    <label class="filters__checkbox">
-                        <input type="checkbox" name="filter-wide" data-filters-wide>
-                        <span>Available wide</span>
+                    <label class="search">
+                        <span class="search__label">Filter by title or author</span>
+                        <input class="search__input" type="text" name="filter-search" placeholder="Start typing...">
                     </label>
-                    <label class="filters__checkbox">
-                        <input type="checkbox" name="filter-direct" data-filters-direct>
-                        <span>Has direct buy link</span>
-                    </label>
-                    <label class="filters__checkbox">
-                        <input type="checkbox" name="filter-intl" data-filters-intl>
-                        <span>On sale on international Amazon</span>
-                    </label>
-                </fieldset>
-                
-                <button class="filters__go" type="button" data-filters-go>Go</button>
-            </form>
 
-            <ul class="books">
-                {%- for book in processed -%}
-                <li class="book"
-                    {% if book.wide %}
-                        data-wide
-                    {% endif %}
-                    {% if book.directLink != "" %}
-                        data-direct
-                    {% endif %}
-                    {% if book.intl %}
-                        data-intl
-                    {% endif %}
-                >
-                    <div class="book__image">
-                        {%- if book.imgLink != "" -%}
-                        <img src="{{book.imgLink}}" alt=" " aria-hidden="true" />
-                        {%- else -%}
-                        <img src="https://images.amazon.com/images/P/{{book.asin}}.01.LZZZZZZZ.jpg" alt=" " aria-hidden="true" />
-                        {%- endif -%}
-                    </div>
-                    <div class="book__title">
-                        {{book.title}}
-                    </div>
-                    <div class="book__author">
-                        {{book.author}}
-                    </div>
-                    <div class="book__tags">
-                        {%- if book.spfboCohort != "" -%}
-                            <span class="book__tag">{{book.spfboCohort}}</span>
-                        {%- endif -%}
-                    </div>
-                    {%- if book.directLink != "" -%}
-                    <div class="book__direct-link book__link">
-                        <a href="{{book.directLink}}">
-                            <span class="book__link-text">Buy <span class="sr-only">{{book.title}} </span>Direct from Author</span>
-                        </a>
-                    </div>
-                    {%- endif -%}
-                    <ul class="book__links">
-                        {%- for market in marketplaces -%}
-                        <li class="book__link book__link-zon" data-market="{{market.countryCode}}">
-                            <a href="https://www.amazon{{market.urlSuffix}}/dp/{{book.asin}}">
-                                <span class="sr-only">Get {{book.title}} on </span>
-                                <span class="book__link-text">Amazon{{market.urlSuffix}}</span>
-                                <img src="https://flagcdn.com/h20/{{market.countryCode}}.png" alt=" " aria-hidden="true" />
-                            </a>
-                        </li>
-                        {%- endfor -%}
-                        {%- if book.koboLink != "" -%}
-                        <li class="book__link book__link-wide">
-                            <a href="{{book.koboLink}}">
-                                <span class="sr-only">Get {{book.title}} on </span>
-                                <span class="book__link-text">Kobo</span>
-                            </a>
-                        </li>
-                        {%- endif -%}
-                        {%- if book.smashwordsLink != "" -%}
-                        <li class="book__link book__link-wide">
-                            <a href="{{book.smashwordsLink}}">
-                                <span class="sr-only">Get {{book.title}} on </span>
-                                <span class="book__link-text">Smashwords</span>
-                            </a>
-                        </li>
-                        {%- endif -%}
-                        {%- if book.googleLink != "" -%}
-                        <li class="book__link book__link-wide">
-                            <a href="{{book.googleLink}}">
-                                <span class="sr-only">Get {{book.title}} on </span>
-                                <span class="book__link-text">Google Play Store</span>
-                            </a>
-                        </li>
-                        {%- endif -%}
-                        {%- if book.appleLink != "" -%}
-                        <li class="book__link book__link-wide">
-                            <a href="{{book.appleLink}}">
-                                <span class="sr-only">Get {{book.title}} on </span>
-                                <span class="book__link-text">Apple Books</span>
-                            </a>
-                        </li>
-                        {%- endif -%}
-                        {%- if book.bnLink != "" -%}
-                        <li class="book__link book__link-wide">
-                            <a href="{{book.bnLink}}">
-                                <span class="sr-only">Get {{book.title}} at </span>
-                                <span class="book__link-text">Barnes & Noble</span>
-                            </a>
-                        </li>
-                        {%- endif -%}
-                    </ul>
-                </li>
-                {%- endfor -%}
-            </ul>
+                    <label class="marketplace-select">
+                        <span class="marketplace-select__label">Show Amazon Marketplace</span>
+                        <select class="marketplace-select__select" data-filters-marketplace>
+                            <option value="all">Show All</option>
+                            {%- for market in marketplaces -%}
+                            <option value="{{market.countryCode}}">Amazon{{market.urlSuffix}}</option>
+                            {%- endfor -%}
+                        </select>
+                    </label>
 
-            <div class="disclaimer">
-                <p>This is an unofficial listing page for the 2024 r/Fantasy MegaSale. I am not affiliated with r/fantasy or the good folks at Wraithmarked.</p>
-                <p>I am, however, a participating author in the sale. If you found this page useful, maybe consider giving <a href="https://yrliu.com/">my books</a> a look?</p>
-                <p>Info on wide books, direct sale, international sale, and SPFBO/SPSFC/SFINCS were collected by <a href="https://www.delilahwaan.com/">Delilah Waan</a>, <a href="https://authorniranjan.in/">Niranjan</a>, and <a href="https://authorjm.com/">Joanna Maciejewska</a>. Check out their books, too!</p>
-            </div>
+                    <fieldset class="filters__checkboxes">
+                        <legend class="sr-only">Filter by Availability</legend>
+                        <label class="filters__checkbox">
+                            <input type="checkbox" name="filter-wide" data-filters-wide>
+                            <span>Available wide</span>
+                        </label>
+                        <label class="filters__checkbox">
+                            <input type="checkbox" name="filter-direct" data-filters-direct>
+                            <span>Has direct buy link</span>
+                        </label>
+                        <label class="filters__checkbox">
+                            <input type="checkbox" name="filter-intl" data-filters-intl>
+                            <span>On sale on international Amazon</span>
+                        </label>
+                    </fieldset>
+                    
+                    <button class="filters__go" type="button" data-filters-go>Go</button>
+                </form>
+            </aside>
+
+            <main>
+                <ul class="books">
+                    {%- for book in processed -%}
+                    <li class="book"
+                        {% if book.wide %}
+                            data-wide
+                        {% endif %}
+                        {% if book.directLink != "" %}
+                            data-direct
+                        {% endif %}
+                        {% if book.intl %}
+                            data-intl
+                        {% endif %}
+                    >
+                        <div class="book__image">
+                            {%- if book.imgLink != "" -%}
+                            <img src="{{book.imgLink}}" alt=" " aria-hidden="true" />
+                            {%- else -%}
+                            <img src="https://images.amazon.com/images/P/{{book.asin}}.01.LZZZZZZZ.jpg" alt=" " aria-hidden="true" />
+                            {%- endif -%}
+                        </div>
+                        <div class="book__title">
+                            {{book.title}}
+                        </div>
+                        <div class="book__author">
+                            {{book.author}}
+                        </div>
+                        <div class="book__tags">
+                            {%- if book.spfboCohort != "" -%}
+                                <span class="book__tag">{{book.spfboCohort}}</span>
+                            {%- endif -%}
+                        </div>
+                        {%- if book.directLink != "" -%}
+                        <div class="book__direct-link book__link">
+                            <a href="{{book.directLink}}">
+                                <span class="book__link-text">Buy <span class="sr-only">{{book.title}} </span>Direct from Author</span>
+                            </a>
+                        </div>
+                        {%- endif -%}
+                        <ul class="book__links">
+                            {%- for market in marketplaces -%}
+                            <li class="book__link book__link-zon" data-market="{{market.countryCode}}">
+                                <a href="https://www.amazon{{market.urlSuffix}}/dp/{{book.asin}}">
+                                    <span class="sr-only">Get {{book.title}} on </span>
+                                    <span class="book__link-text">Amazon{{market.urlSuffix}}</span>
+                                    <img src="https://flagcdn.com/h20/{{market.countryCode}}.png" alt=" " aria-hidden="true" />
+                                </a>
+                            </li>
+                            {%- endfor -%}
+                            {%- if book.koboLink != "" -%}
+                            <li class="book__link book__link-wide">
+                                <a href="{{book.koboLink}}">
+                                    <span class="sr-only">Get {{book.title}} on </span>
+                                    <span class="book__link-text">Kobo</span>
+                                </a>
+                            </li>
+                            {%- endif -%}
+                            {%- if book.smashwordsLink != "" -%}
+                            <li class="book__link book__link-wide">
+                                <a href="{{book.smashwordsLink}}">
+                                    <span class="sr-only">Get {{book.title}} on </span>
+                                    <span class="book__link-text">Smashwords</span>
+                                </a>
+                            </li>
+                            {%- endif -%}
+                            {%- if book.googleLink != "" -%}
+                            <li class="book__link book__link-wide">
+                                <a href="{{book.googleLink}}">
+                                    <span class="sr-only">Get {{book.title}} on </span>
+                                    <span class="book__link-text">Google Play Store</span>
+                                </a>
+                            </li>
+                            {%- endif -%}
+                            {%- if book.appleLink != "" -%}
+                            <li class="book__link book__link-wide">
+                                <a href="{{book.appleLink}}">
+                                    <span class="sr-only">Get {{book.title}} on </span>
+                                    <span class="book__link-text">Apple Books</span>
+                                </a>
+                            </li>
+                            {%- endif -%}
+                            {%- if book.bnLink != "" -%}
+                            <li class="book__link book__link-wide">
+                                <a href="{{book.bnLink}}">
+                                    <span class="sr-only">Get {{book.title}} at </span>
+                                    <span class="book__link-text">Barnes & Noble</span>
+                                </a>
+                            </li>
+                            {%- endif -%}
+                        </ul>
+                    </li>
+                    {%- endfor -%}
+                </ul>
+            </main>
+
+            <footer>
+                {% renderFile "src/_includes/footertext.md" %}
+            </footer>
         </div>
 
         <button class="back-to-top" type="button">
