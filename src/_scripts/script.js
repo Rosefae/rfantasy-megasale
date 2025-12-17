@@ -75,16 +75,26 @@ function getAvailabilityFilter() {
 
 function isBookMatchAvailability(book, availabilities) {
     // show if book in ANY of the checked marketplaces
-    var match = false;
+
+    // special case for hiding amazon-only books while still showing everything else
+    if (availabilities.length == 1 && availabilities[0] == "zon-none") {
+        let wideStore = book.querySelector(".book__link:not(.book__link-zon)");
+        if (wideStore) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
 
     for (let store of availabilities) {
         let storeLink = book.querySelector(`.book__link[data-market="${store}"]`);
         if (storeLink) {
-            match = true;
+            return true;
         }
     }
 
-    return match;
+    return false;
 }
 
 function setFilter() {
