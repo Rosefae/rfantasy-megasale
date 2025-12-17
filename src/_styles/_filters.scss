@@ -1,21 +1,34 @@
 @use 'utils';
 
-.filter-btn {
-    border: none;
-    background: none;
-    padding: 0;
-    margin: 0 0 1rem;
-    color: inherit;
+// .filter-btn {
+//     border: none;
+//     background: none;
+//     padding: 0;
+//     margin: 0 0 1rem;
+//     color: inherit;
 
-    &__text {
-        margin: 0;
-        font-size: 1.2rem;
-    }
-}
+//     &__text {
+//         margin: 0;
+//         font-size: 1.2rem;
+//     }
+
+//     @media screen and (min-width: utils.$bp-s) {
+//         display: none;
+//     }
+// }
 
 .filters {
     margin-bottom: 2rem;
     padding: 0 1rem 1rem;
+    // display: none;
+
+    // &--show {
+    //     display: block;
+    // }
+
+    // @media screen and (min-width: utils.$bp-s) {
+    //     display: block;
+    // }
 }
 
 fieldset {
@@ -51,4 +64,33 @@ fieldset {
 .checkbox {
     display: inline-block;
     margin: 0 0.5em 0.5em;
+}
+
+
+// Filtered results
+
+.books[data-query] {
+    .book:not(.search-match) {
+        display: none;
+    }
+}
+
+.books[data-storefilter] {
+    .book:not(.availability-match) {
+        display: none;
+    }
+}
+
+@each $market in utils.$zon-markets {
+    .books[data-amazon="#{$market}"] {
+        .book__link-zon:not([data-market="zon-#{$market}"]) {
+            display: none;
+        }
+    }
+}
+
+.books[data-amazon="none"] {
+    .book__link-zon {
+        display: none;
+    }
 }

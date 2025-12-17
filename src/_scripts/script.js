@@ -1,41 +1,129 @@
 // Back to Top button
 
-var backToTopBtn = document.querySelector('.back-to-top');
+const backToTopBtn = document.querySelector('.back-to-top');
 
-backToTopBtn.addEventListener('click', backToTop);
-
-function backToTop(){
+function backToTop() {
     window.scrollTo({top: 0});
 }
 
-// Toggle marketplaces
+backToTopBtn.addEventListener('click', backToTop);
 
-var filtersBtn = document.querySelector('[data-filters-go]');
-var filterMarketSelect = document.querySelector('[data-filters-marketplace]');
-var filterWide = document.querySelector('input[data-filters-wide]');
-var filterDirect = document.querySelector('input[data-filters-direct]');
-var filterIntl = document.querySelector('input[data-filters-intl]');
-var booksList = document.querySelector('.books');
 
-function toggleFilter(checkbox, dataAttribute) {
-    if (checkbox.checked == true) {
-        booksList.setAttribute(dataAttribute, true);
+// Filtering
+
+// const filterBtn = document.querySelector('.filter-btn');
+// const filterForm = document.querySelector('form.filters');
+
+// filterBtn.addEventListener("click", () => {
+//     filterForm.classList.toggle("filters--show");
+// })
+
+const searchInput = document.querySelector('input[name="filter-search"]');
+const amazonSelect = document.querySelector('select[name="filter-amazon"]');
+const wideCheckboxes = document.querySelectorAll('.availability__wide input[type="checkbox"]');
+
+const booksList = document.querySelector('.books');
+const bookCards = booksList.querySelectorAll('.book');
+
+function getSearchFilter() {
+    // title/author search
+    var textFilter = searchInput.value.trim().toLowerCase();
+    return textFilter;
+}
+
+function isBookMatchSearch(book, query) {
+    if (!query) return false;
+
+    const title = book.dataset.title;
+    const author = book.dataset.author;
+
+    // TODO: be more forgiving towards spaces/dots for author initials
+    if (title.includes(query) || author.includes(query)) {
+        return true;
     }
     else {
-        booksList.removeAttribute(dataAttribute);
+        return false;
     }
 }
 
-filtersBtn.addEventListener('click', function () {
-    var marketplaceValue = filterMarketSelect.value;
-    if (marketplaceValue == "all") {
-        booksList.removeAttribute("data-show-market");
+function getAvailabilityFilter() {
+    var availabilities = [];
+
+    // Amazon marketplace
+    var amazonMarket = amazonSelect.value;
+    if (amazonMarket != "all") {
+        booksList.dataset.amazon = amazonMarket;
+        availabilities.push("zon-" + amazonMarket);
     }
     else {
-        booksList.setAttribute("data-show-market", marketplaceValue);
+        booksList.removeAttribute("data-amazon");
     }
 
-    toggleFilter(filterWide, 'data-filter-by-wide');
-    toggleFilter(filterDirect, 'data-filter-by-direct');
-    toggleFilter(filterIntl, 'data-filter-by-intl');
+    // Wide markets
+    wideCheckboxes.forEach((wide) => {
+        if (wide.checked) {
+            booksList.dataset[wide.value] = true;
+            availabilities.push(wide.value);
+        }
+        else {
+            booksList.removeAttribute("data-" + wide.value);
+        }
+    });
+
+    return availabilities;
+}
+
+function isBookMatchAvailability(book, availabilities) {
+    // show if book in ANY of the checked marketplaces
+    var match = false;
+
+    for (let store of availabilities) {
+        let storeLink = book.querySelector(`.book__link[data-market="${store}"]`);
+        if (storeLink) {
+            match = true;
+        }
+    }
+
+    return match;
+}
+
+function setFilter() {
+    const textFilter = getSearchFilter();
+    const availabilityFilters = getAvailabilityFilter();
+
+    if (textFilter) {
+        booksList.dataset.query = textFilter;
+    }
+    else {
+        booksList.removeAttribute("data-query");
+    }
+
+    if (availabilityFilters.length > 0) {
+        booksList.dataset.storefilter = true;
+    }
+    else {
+        booksList.removeAttribute("data-storefilter");
+    }
+
+    bookCards.forEach((book) => {
+        if (isBookMatchSearch(book, textFilter)) {
+            book.classList.add("search-match");
+        }
+        else {
+            book.classList.remove("search-match");
+        }
+
+        if (isBookMatchAvailability(book, availabilityFilters)) {
+            book.classList.add("availability-match");
+        }
+        else {
+            book.classList.remove("availability-match");
+        }
+    });
+}
+
+searchInput.addEventListener("input", setFilter);
+amazonSelect.addEventListener("change", setFilter);
+wideCheckboxes.forEach((el) => {
+    el.addEventListener("change", setFilter);
 });

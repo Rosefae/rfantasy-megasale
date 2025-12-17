@@ -1,7 +1,8 @@
 <ul class="books">
     {%- for book in processed -%}
-    <li class="book" {% if book.wide %} data-wide {% endif %} {% if book.directLink !="" %} data-direct {% endif %} {%
-        if book.intl %} data-intl {% endif %}>
+    <li class="book"
+        data-title="{{book.title | downcase}}" data-author="{{book.author | downcase}}"
+    >
         <div class="book__image">
             {%- if book.imgLink != "" -%}
             <img src="{{book.imgLink}}" alt=" " aria-hidden="true" />
@@ -21,40 +22,34 @@
             {%- endif -%}
         </div> {% endcomment %}
         {%- if book.directLink != "" -%}
-        <div class="book__direct-link book__link">
+        <div class="book__direct-link book__link" data-market="direct">
             <a href="{{book.directLink}}">
                 <span class="book__link-text">Buy <span class="sr-only">{{book.title}} </span>Direct from Author</span>
             </a>
         </div>
         {%- endif -%}
         <ul class="book__links">
-            {%- for market in marketplaces -%}
-            <li class="book__link book__link-zon" data-market="{{market.countryCode}}">
-                <a href="https://www.amazon{{market.urlSuffix}}/dp/{{book.asin}}">
-                    <span class="sr-only">Get {{book.title}} on </span>
-                    <span class="book__link-text">Amazon{{market.urlSuffix}}</span>
-                    <img src="https://flagcdn.com/h20/{{market.countryCode}}.png" alt=" " aria-hidden="true" />
-                </a>
-            </li>
+            {%- for market in amazon_marketplaces -%}
+                {% if book.intl or marketplace.countryCode == us %}
+                    <li class="book__link book__link-zon" data-market="zon-{{market.countryCode}}">
+                        <a href="https://www.amazon{{market.urlSuffix}}/dp/{{book.asin}}">
+                            <span class="sr-only">Get {{book.title}} on </span>
+                            <span class="book__link-text">Amazon{{market.urlSuffix}}</span>
+                            <img src="https://flagcdn.com/h20/{{market.countryCode}}.png" alt=" " aria-hidden="true" />
+                        </a>
+                    </li>
+                {% endif %}
             {%- endfor -%}
             {%- if book.koboLink != "" -%}
-            <li class="book__link book__link-wide">
+            <li class="book__link book__link-wide" data-market="kobo">
                 <a href="{{book.koboLink}}">
                     <span class="sr-only">Get {{book.title}} on </span>
                     <span class="book__link-text">Kobo</span>
                 </a>
             </li>
             {%- endif -%}
-            {%- if book.smashwordsLink != "" -%}
-            <li class="book__link book__link-wide">
-                <a href="{{book.smashwordsLink}}">
-                    <span class="sr-only">Get {{book.title}} on </span>
-                    <span class="book__link-text">Smashwords</span>
-                </a>
-            </li>
-            {%- endif -%}
             {%- if book.googleLink != "" -%}
-            <li class="book__link book__link-wide">
+            <li class="book__link book__link-wide" data-market="google">
                 <a href="{{book.googleLink}}">
                     <span class="sr-only">Get {{book.title}} on </span>
                     <span class="book__link-text">Google Play Store</span>
@@ -62,7 +57,7 @@
             </li>
             {%- endif -%}
             {%- if book.appleLink != "" -%}
-            <li class="book__link book__link-wide">
+            <li class="book__link book__link-wide" data-market="apple">
                 <a href="{{book.appleLink}}">
                     <span class="sr-only">Get {{book.title}} on </span>
                     <span class="book__link-text">Apple Books</span>
@@ -70,10 +65,18 @@
             </li>
             {%- endif -%}
             {%- if book.bnLink != "" -%}
-            <li class="book__link book__link-wide">
+            <li class="book__link book__link-wide" data-market="bn">
                 <a href="{{book.bnLink}}">
                     <span class="sr-only">Get {{book.title}} at </span>
                     <span class="book__link-text">Barnes & Noble</span>
+                </a>
+            </li>
+            {%- endif -%}
+            {%- if book.smashwordsLink != "" -%}
+            <li class="book__link book__link-wide" data-market="smashwords">
+                <a href="{{book.smashwordsLink}}">
+                    <span class="sr-only">Get {{book.title}} on </span>
+                    <span class="book__link-text">Smashwords</span>
                 </a>
             </li>
             {%- endif -%}

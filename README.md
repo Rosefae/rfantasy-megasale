@@ -4,7 +4,10 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 
 `npm start` and `localhost:8080`.
 
-## Next year:
+## To-dos (2025):
+- [ ] For books not on sale on intl Amazon, instead of hiding the intl links altogether, add an exclaimation mark next to the intl links with a tooltip saying "Not verified to be on sale internationally"
+
+## Future Improvements:
 - Probably worth it to get an API key and pull the images properly
 - Lazy load the images?
 - Series pages are causing problems -- use ASIN for first book in series intead of the series page next time
