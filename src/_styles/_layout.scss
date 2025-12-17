@@ -21,6 +21,25 @@ body {
     text-align: center;
 }
 
+header {
+    margin: 1em 0;
+}
+
+h1 {
+    text-align: center;
+    font-size: 3rem;
+}
+
+footer {
+    font-size: 0.7rem;
+
+    a,
+    a:visited {
+        color: inherit;
+        text-decoration: underline;
+    }
+}
+
 .back-to-top {
     position: fixed;
     bottom: 1rem;
@@ -36,23 +55,5 @@ body {
 
     &:focus-visible {
         outline: 2px var(--text-color) solid;
-    }
-}
-
-// Header & Footer
-
-h1 {
-    text-align: center;
-    margin: 1em 0;
-    font-size: 3rem;
-}
-
-footer {
-    font-size: 0.7rem;
-
-    a,
-    a:visited {
-        color: inherit;
-        text-decoration: underline;
     }
 }

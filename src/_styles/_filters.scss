@@ -1,34 +1,54 @@
 @use 'utils';
 
-.filters {
-    margin-bottom: 2rem;
-    border: 2px var(--text-color) solid;
-    padding: 0 1rem 1rem;
+.filter-btn {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    color: inherit;
 
-    h2 {
+    &__text {
+        margin: 0;
         font-size: 1.2rem;
-        margin: -1.5em auto 0;
-        background-color: var(--bg-color);
-        width: fit-content;
-        padding: 0.5em;
-    }
-
-    &__checkboxes {
-        border: none;
-        padding: 0;
-    }
-
-    &__checkbox {
-        display: inline-block;
-        margin: 0 0.5em 0.5em;
     }
 }
 
-.marketplace-select {
+.filters {
+    margin-bottom: 2rem;
+    padding: 0 1rem 1rem;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search,
+.availability {
     display: block;
-    margin-bottom: 1rem;
+    border: none;
+    margin: 0 0 1rem;
 
     &__label {
+        display: block;
         font-weight: 800;
+        margin-bottom: 0.5em;
     }
+
+    &__amazon {
+        display: block;
+        margin-bottom: 0.5em;
+    }
+}
+
+.amazon-select {
+    &__select {
+        margin-bottom: 0.3em;
+    }
+}
+
+.checkbox {
+    display: inline-block;
+    margin: 0 0.5em 0.5em;
 }

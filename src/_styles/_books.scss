@@ -103,35 +103,35 @@
         grid-template-columns: repeat(4, 1fr);
     }
 
-    &[data-show-market] {
-        .book__link-zon {
-            display: none;
-        }
-    }
+    // &[data-show-market] {
+    //     .book__link-zon {
+    //         display: none;
+    //     }
+    // }
 
-    @each $market in utils.$markets {
-        &[data-show-market="#{$market}"] {
-            .book__link-zon[data-market="#{$market}"] {
-                display: block;
-            }
-        }
-    }
+    // @each $market in utils.$markets {
+    //     &[data-show-market="#{$market}"] {
+    //         .book__link-zon[data-market="#{$market}"] {
+    //             display: block;
+    //         }
+    //     }
+    // }
 
-    &[data-filter-by-wide] {
-        .book:not([data-wide]) {
-            display: none;
-        }
-    }
+    // &[data-filter-by-wide] {
+    //     .book:not([data-wide]) {
+    //         display: none;
+    //     }
+    // }
 
-    &[data-filter-by-direct] {
-        .book:not([data-direct]) {
-            display: none;
-        }
-    }
+    // &[data-filter-by-direct] {
+    //     .book:not([data-direct]) {
+    //         display: none;
+    //     }
+    // }
 
-    &[data-filter-by-intl] {
-        .book:not([data-intl]) {
-            display: none;
-        }
-    }
+    // &[data-filter-by-intl] {
+    //     .book:not([data-intl]) {
+    //         display: none;
+    //     }
+    // }
 }

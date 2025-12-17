@@ -27,42 +27,33 @@ tags: index
             </header>
 
             <aside>
+                <button type="button" class="filter-btn"><h2 class="filter-btn__text">Filters</h2></button>
                 <form class="filters">
-                    <h2 class="sr-only">Filters</h2>
-
                     <label class="filters__search search">
                         <span class="search__label">Filter by Title or Author</span>
                         <input class="search__input" type="text" name="filter-search" placeholder="Start typing...">
                     </label>
 
-                    <fieldset>
-                        <legend>
+                    <fieldset class="filters__availability availability">
+                        <legend class="availability__label">
                             Filter by Availability
                         </legend>
-                        <fieldset class="filters__amazon">
-                            <legend class="sr-only">Filter by Amazon Marketplace</legend>
+                        
+                        <label class="availability__amazon amazon-select">
+                            <span class="amazon-select__label">Amazon Marketplace:</span>
+                            <select class="amazon-select__select" data-filters-marketplace>
+                                <option value="all">Show All</option>
+                                {%- for market in amazon_marketplaces -%}
+                                <option value="{{market.countryCode}}">Amazon{{market.urlSuffix}}</option>
+                                {%- endfor -%}
+                            </select>
+                        </label>
 
-                            <label class="amazon-select">
-                                <span class="amazon-select__label">Amazon Marketplace</span>
-                                <select class="amazon-select__select" data-filters-marketplace>
-                                    <option value="all">Show All</option>
-                                    {%- for market in amazon_marketplaces -%}
-                                    <option value="{{market.countryCode}}">Amazon{{market.urlSuffix}}</option>
-                                    {%- endfor -%}
-                                </select>
-                            </label>
-
-                            <label class="amazon-checkbox filters__checkbox">
-                                <input type="checkbox" name="filter-intl">
-                                <span>On sale on international Amazon</span>
-                            </label>
-                        </fieldset>
-
-                        <fieldset class="filters__wide">
-                            <legend class="sr-only">Filter by Wide Marketplaces</legend>
+                        <fieldset class="availability__wide">
+                            <legend class="sr-only">Wide Marketplaces</legend>
 
                             {%- for market in wide_marketplaces -%}
-                                <label class="filters__checkbox wide-checkbox">
+                                <label class="checkbox wide-checkbox">
                                     <input type="checkbox" name="filter-{{market.uglyName}}" value="{{market.uglyName}}">
                                     <span>{{market.niceName}}</span>
                                 </label>
