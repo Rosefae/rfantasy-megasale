@@ -15,11 +15,11 @@
         <div class="book__author">
             {{book.author}}
         </div>
-        <div class="book__tags">
+        {% comment %} <div class="book__tags">
             {%- if book.spfboCohort != "" -%}
             <span class="book__tag">{{book.spfboCohort}}</span>
             {%- endif -%}
-        </div>
+        </div> {% endcomment %}
         {%- if book.directLink != "" -%}
         <div class="book__direct-link book__link">
             <a href="{{book.directLink}}">
