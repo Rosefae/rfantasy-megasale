@@ -94,3 +94,15 @@ fieldset {
         display: none;
     }
 }
+
+@each $market in utils.$wide-markets {
+    .books[data-#{$market}] {
+        .book__link-wide {
+            display: none;
+
+            &[data-market="#{$market}"] {
+                display: block;
+            }
+        }
+    }
+}
