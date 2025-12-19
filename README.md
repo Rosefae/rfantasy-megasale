@@ -10,7 +10,8 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 - [ ] Make the search more forgiving of spaces / punctuation (nice to have)
 - [x] Update styles
 - [ ] Bring in new data and iron out the seams
-- [ ] Add icons/logos for wide stores
+- [x] Add icons/logos for wide stores
+- [ ] Store user filter prefs in localstorage
 
 ## Future Improvements:
 - Probably worth it to get an API key and pull the images properly

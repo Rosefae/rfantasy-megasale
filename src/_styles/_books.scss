@@ -103,11 +103,16 @@
                 }
             }
         }
+    }
 
-        img {
-            vertical-align: middle;
-            height: 0.7em;
-        }
+    &__link-flag {
+        vertical-align: middle;
+        height: 0.7em;
+    }
+
+    &__link-logo {
+        vertical-align: middle;
+        height: 0.9em;
     }
 }
 
