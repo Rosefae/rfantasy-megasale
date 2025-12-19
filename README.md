@@ -7,9 +7,8 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 ## To-dos (2025):
 - [x] Add a basic search
 - [x] Separate out wide storefronts in the filter, and generally improve the filtering
-- [ ] For books not on sale on intl Amazon, instead of hiding the intl links altogether, add an exclaimation mark next to the intl links with a tooltip saying "Not verified to be on sale internationally"
 - [ ] Make the search more forgiving of spaces / punctuation (nice to have)
-- [ ] Update styles
+- [x] Update styles
 - [ ] Bring in new data and iron out the seams
 - [ ] Add icons/logos for wide stores
 
