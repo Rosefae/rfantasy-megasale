@@ -30,7 +30,7 @@
         {%- endif -%}
         <ul class="book__links">
             {%- for market in amazon_marketplaces -%}
-                {% if book.intl or marketplace.countryCode == us %}
+                {% if book.intl or market.countryCode == "us" %}
                     <li class="book__link book__link-zon" data-market="zon-{{market.countryCode}}">
                         <a href="https://www.amazon{{market.urlSuffix}}/dp/{{book.asin}}">
                             <span class="sr-only">Get {{book.title}} on </span>
