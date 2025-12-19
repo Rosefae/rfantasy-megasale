@@ -9,7 +9,8 @@ tags: index
         <meta charset="UTF-8">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Federo&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./_styles/styles.css">
         <title>{{meta.title}}</title>
 
@@ -17,7 +18,7 @@ tags: index
         <meta name="description" content="{{meta.desc}}">
     </head>
     <body>
-        <div class="container">
+        <div class="header-container">
             <header>
                 <h1>{{meta.title}}</h1>
                 <div class="subheading">
@@ -64,7 +65,8 @@ tags: index
                     </fieldset>
                 </form>
             </aside>
-
+        </div>
+        <div class="container">
             <main>
                 {% include 'books' %}
             </main>
@@ -87,7 +89,6 @@ tags: index
 
         <button class="back-to-top" type="button">
             <span class="sr-only">Back to Top</span>
-            <span aria-hidden="true">⬆️</span>
         </button>
 
         <script type="text/javascript" src="./_scripts/script.js"></script>

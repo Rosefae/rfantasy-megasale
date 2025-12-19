@@ -1,3 +1,5 @@
+@use 'sass:color';
+
 $bp-l: 1300px;
 $bp-m: 1024px;
 $bp-s: 768px;
@@ -5,26 +7,50 @@ $bp-s: 768px;
 $zon-markets: "us", "gb", "de", "fr", "es", "it", "nl", "jp", "br", "ca", "mx", "au", "in";
 $wide-markets: "kobo", "google", "apple", "bn", "smashwords";
 
-$font-main: 'Raleway', sans-serif;
+$font-main: "Raleway", sans-serif;
+$font-accent: "Federo", sans-serif;
+
+$color-white: #fff;
+$color-black: #000;
+
+$card-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+$card-shadow-hover: 0 7px 75px rgba(0, 0, 0, 0.3);
+$card-border-radius: 0.6rem;
+$card-bg-color: var(--card-bg-color);
+$card-text-color: var(--text-color);
+$card-border-color: var(--card-border-color);
+$card-text-inset: var(--text-inset);
+$card-backdrop-filter: blur(0.4rem);
+$card-backdrop-filter-hover: blur(0.7rem);
+$card-transform-hover: scale(1.008) translatey(-0.1rem);
+$card-transition: 0.1s ease-out;
+$card-transition-properties: box-shadow, backdrop-filter, transform;
 
 :root {
-	--bg-color: #fff;
-	--text-color: #333;
+    --card-bg-color: #{color.change($color-black, $alpha: 0.1)};
+    --text-color: #{color.change($color-white, $alpha: 0.9)};
+    --card-border-color: #{color.change($color-white, $alpha: 0.1)};
 
-	@media (prefers-color-scheme: dark) {
-		--bg-color: #333;
-		--text-color: #fff;
-	}
+    --text-inset: 
+        1px 1px 0 rgba(255, 255, 255, 0.2),
+        -1px 1px 0 rgba(255, 255, 255, 0.2),
+        1px -1px 0 rgba(0, 0, 0, 0.1),
+        -1px -1px 0 rgba(0, 0, 0, 0.2);
+
+    // @media (prefers-color-scheme: dark) {
+    // 	--bg-color: #333;
+    // 	--text-color: #fff;
+    // }
 }
 
 .sr-only {
-	position: absolute;
-	width: 1px;
-	height: 1px;
-	padding: 0;
-	margin: -1px;
-	overflow: hidden;
-	clip: rect(0, 0, 0, 0);
-	white-space: nowrap;
-	border-width: 0;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
 }
