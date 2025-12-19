@@ -1,7 +1,11 @@
 // 11ty handles everything except the CSS stuff.
 // For CSS stuff, please see the gulpfile.
 
-module.exports = function(eleventyConfig){
+module.exports = async function(eleventyConfig){
+    const { RenderPlugin } = await import("@11ty/eleventy");
+    eleventyConfig.addPlugin(RenderPlugin, {
+        accessGlobalData: true
+    });
 
     // Copy assets and scripts
 

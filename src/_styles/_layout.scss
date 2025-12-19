@@ -1,0 +1,121 @@
+@use 'utils';
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: utils.$color-black;
+    background: url(/_assets/sky.jpg) no-repeat fixed center bottom / cover;
+    color: var(--text-color);
+    font-family: utils.$font-main;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 1400px;
+    padding: 0.5rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.header-container,
+footer {
+    text-align: center;
+    background-color: utils.$card-bg-color;
+    backdrop-filter: utils.$card-backdrop-filter;
+    box-shadow: utils.$card-shadow;
+    text-shadow: utils.$card-text-inset;
+
+    & > * {
+        max-width: 1400px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+}
+
+.header-container {
+    border-bottom: 1px solid utils.$card-border-color;
+    padding-top: 2rem;
+}
+
+footer {
+    border-top: 1px solid utils.$card-border-color;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    font-size: 0.7rem;
+
+    a,
+    a:visited {
+        color: inherit;
+        text-decoration: underline;
+    }
+}
+
+header {
+    margin-bottom: 1.8rem;
+}
+
+h1 {
+    text-align: center;
+    font-size: 2.8rem;
+    margin: 0 0 0.3em;
+    font-family: utils.$font-accent;
+}
+
+.subheading {
+
+    &__date {
+        font-family: utils.$font-accent;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+}
+
+.back-to-top {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    background-color: utils.$card-bg-color;
+    border: 1px solid utils.$card-border-color;
+    backdrop-filter: utils.$card-backdrop-filter;
+    box-shadow: utils.$card-shadow;
+    height: 3em;
+    width: 3em;
+    padding: 0;
+    border-radius: 50%;
+    color: utils.$card-text-color;
+    cursor: pointer;
+    transition: utils.$card-transition;
+    transition-property: utils.$card-transition-properties;
+    z-index: 10;
+
+    &::after {
+        content: '';
+        display: block;
+        position:absolute;
+        top: calc(50% - 0.5em);
+        left: calc(50% - 0.5em);
+        transform: rotate(45deg) translate(10%, 10%);
+        height: 1em;
+        width: 1em;
+        border-top: 0.15em solid currentColor;
+        border-left: 0.15em solid currentColor;
+    }
+
+    &:focus-visible {
+        outline: 2px solid utils.$card-border-color;
+    }
+
+    &:hover,
+    &:focus {
+        box-shadow: utils.$card-shadow-hover;
+        backdrop-filter: utils.$card-backdrop-filter-hover;
+        transform: scale(1.1);
+    }
+}

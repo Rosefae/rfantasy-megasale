@@ -1,0 +1,136 @@
+@use 'utils';
+
+.book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem;
+    box-shadow: utils.$card-shadow;
+    border-radius: utils.$card-border-radius;
+    background-color: utils.$card-bg-color;
+    color: utils.$card-text-color;
+    border: 1px solid utils.$card-border-color;
+    text-shadow: utils.$card-text-inset;
+    backdrop-filter: utils.$card-backdrop-filter;
+    // transition: utils.$card-transition;
+    // transition-property: utils.$card-transition-properties;
+
+    // &:hover,
+    // &:focus-within {
+    //     box-shadow: utils.$card-shadow-hover;
+    //     backdrop-filter: utils.$card-backdrop-filter-hover;
+    //     transform: utils.$card-transform-hover;
+    //     z-index: 1;
+    // }
+
+    &__image {
+        width: 100%;
+        max-width: 15rem;
+        height: 15rem;
+        margin-bottom: 0.5rem;
+        background-color: #fff; // must be pure white to work with amazon's images
+        padding: 0.3rem;
+        border-radius: utils.$card-border-radius;
+        box-shadow: 0 0 0.4rem rgba(255, 255, 255, 0.5);
+
+        img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    &__title {
+        font-size: 1.4rem;
+        font-weight: 800;
+        margin-bottom: 0.4em;
+        font-family: utils.$font-accent;
+    }
+
+    &__author {
+        margin-bottom: 0.7rem;
+        // font-weight: 800;
+        font-family: utils.$font-accent;
+    }
+
+    // May reuse this for genre tags next year
+
+    // &__tags {
+    //     margin-bottom: 0.7rem;
+
+    //     &:empty {
+    //         margin-bottom: 0;
+    //     }
+    // }
+
+    // &__tag {
+    //     display: inline-block;
+    //     font-size: 0.8rem;
+    //     font-weight: 800;
+    //     background-color: var(--text-color);
+    //     color: var(--bg-color);
+    //     padding: 0.4em;
+    //     border-radius: 0.2em;
+    //     line-height: 1;
+    // }
+
+    &__direct-link {
+        font-weight: 800;
+    }
+
+    &__links {
+        list-style: none;
+        padding: 0;
+    }
+
+    &__link {
+        display: block;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            line-height: 2em;
+
+            &:visited {
+                color: inherit;
+            }
+
+            &:hover,
+            &:focus {
+                .book__link-text {
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+    &__link-flag {
+        vertical-align: middle;
+        height: 0.7em;
+    }
+
+    &__link-logo {
+        vertical-align: middle;
+        height: 0.9em;
+    }
+}
+
+.books {
+    display: grid;
+    grid-gap: 2rem;
+    grid-template-columns: 1fr;
+    padding: 0;
+
+    @media screen and (min-width: utils.$bp-s) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media screen and (min-width: utils.$bp-m) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media screen and (min-width: utils.$bp-l) {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}

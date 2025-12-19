@@ -4,7 +4,16 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 
 `npm start` and `localhost:8080`.
 
-## Next year:
+## To-dos (2025):
+- [x] Add a basic search
+- [x] Separate out wide storefronts in the filter, and generally improve the filtering
+- [ ] Make the search more forgiving of spaces / punctuation (nice to have)
+- [x] Update styles
+- [ ] Bring in new data and iron out the seams
+- [x] Add icons/logos for wide stores
+- [x] Store user filter prefs in localstorage
+
+## Future Improvements:
 - Probably worth it to get an API key and pull the images properly
 - Lazy load the images?
 - Series pages are causing problems -- use ASIN for first book in series intead of the series page next time

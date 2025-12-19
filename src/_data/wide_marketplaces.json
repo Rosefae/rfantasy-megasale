@@ -1,0 +1,26 @@
+[
+    {
+        "niceName": "Direct Store",
+        "uglyName": "direct"
+    },
+    {
+        "niceName": "Kobo",
+        "uglyName": "kobo"
+    },
+    {
+        "niceName": "Google Play Store",
+        "uglyName": "google"
+    },
+    {
+        "niceName": "Apple Books",
+        "uglyName": "apple"
+    },
+    {
+        "niceName": "Barnes & Noble",
+        "uglyName": "bn"
+    },
+    {
+        "niceName": "Smashwords",
+        "uglyName": "smashwords"
+    }
+]

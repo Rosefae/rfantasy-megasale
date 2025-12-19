@@ -1,0 +1,141 @@
+@use 'utils';
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+fieldset {
+    border: none;
+    padding: 0;
+    margin: 0;
+}
+
+.search,
+.availability {
+    display: block;
+    border: none;
+    margin: 0 0 1.5rem;
+
+    &__label {
+        display: block;
+        font-size: 1.2rem;
+        font-family: utils.$font-accent;
+        margin-bottom: 0.7em;
+    }
+
+    &__amazon {
+        display: block;
+        margin-bottom: 0.8em;
+    }
+}
+
+.search__input,
+.amazon-select__select {
+    // background-color: rgba(255, 255, 255, 0.85);
+    box-shadow: var(--text-inset);
+    // border: none;
+    background-color: transparent;
+    border: 1px solid currentColor;
+    color: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    height: 1.5em;
+    border-radius: 1.5em;
+    padding: 0 0.5em;
+
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    option {
+        background-color: utils.$color-black;
+    }
+
+    &:focus-visible {
+        outline: 1px solid currentColor;
+    }
+}
+
+.checkbox {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 0.5em 0.5em;
+    position: relative;
+
+    input {
+        @extend .sr-only;
+    }
+
+    &::before {
+        content: '';
+        display: inline-block;
+        width: 0.8em;
+        height: 0.8em;
+        border: 1px solid currentcolor;
+        box-shadow: utils.$card-text-inset;
+        margin-right: 0.3em;
+        border-radius: 0.2em;
+    }
+
+    &::after {
+        content: '\2713';
+        display: inline-block;
+        width: calc(0.8em + 2px);
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+        opacity: 0;
+    }
+
+    &:has(input:checked)::after {
+        opacity: 1;
+    }
+
+    &:has(input:focus-visible)::before {
+        outline: 1px solid currentColor;
+    }
+}
+
+
+// Filtered results
+
+.books[data-query] {
+    .book:not(.search-match) {
+        display: none;
+    }
+}
+
+.books[data-storefilter] {
+    .book:not(.availability-match) {
+        display: none;
+    }
+}
+
+@each $market in utils.$zon-markets {
+    .books[data-amazon="#{$market}"] {
+        .book__link-zon:not([data-market="zon-#{$market}"]) {
+            display: none;
+        }
+    }
+}
+
+.books[data-amazon="none"] {
+    .book__link-zon {
+        display: none;
+    }
+}
+
+@each $market in utils.$wide-markets {
+    .books[data-#{$market}] {
+        .book__link-wide {
+            display: none;
+
+            &[data-market="#{$market}"] {
+                display: block;
+            }
+        }
+    }
+}
