@@ -25,6 +25,8 @@ const wideCheckboxes = document.querySelectorAll('.availability__wide input[type
 const booksList = document.querySelector('.books');
 const bookCards = booksList.querySelectorAll('.book');
 
+const zonLinkPrefix = "zon-"
+
 function getSearchFilter() {
     // title/author search
     var textFilter = searchInput.value.trim().toLowerCase();
@@ -53,7 +55,7 @@ function getAvailabilityFilter() {
     var amazonMarket = amazonSelect.value;
     if (amazonMarket != "all") {
         booksList.dataset.amazon = amazonMarket;
-        availabilities.push("zon-" + amazonMarket);
+        availabilities.push(zonLinkPrefix + amazonMarket);
     }
     else {
         booksList.removeAttribute("data-amazon");
@@ -77,7 +79,7 @@ function isBookMatchAvailability(book, availabilities) {
     // show if book in ANY of the checked marketplaces
 
     // special case for hiding amazon-only books while still showing everything else
-    if (availabilities.length == 1 && availabilities[0] == "zon-none") {
+    if (availabilities.length == 1 && availabilities[0] == zonLinkPrefix + "none") {
         let wideStore = book.querySelector(".book__link:not(.book__link-zon)");
         if (wideStore) {
             return true;
@@ -130,10 +132,38 @@ function setFilter() {
             book.classList.remove("availability-match");
         }
     });
+
+    // set current filter configuration to localStorage
+    let currentFilterString = JSON.stringify({
+        textFilter: textFilter,
+        availabilityFilters: availabilityFilters
+    });
+    localStorage.setItem("megasaleFilter", currentFilterString);
 }
 
 searchInput.addEventListener("input", setFilter);
 amazonSelect.addEventListener("change", setFilter);
 wideCheckboxes.forEach((el) => {
     el.addEventListener("change", setFilter);
+});
+
+window.addEventListener("load", () => {
+    const currentFilterObj = JSON.parse(localStorage.getItem("megasaleFilter"));
+
+    // searchInput.value = currentFilterObj.textFilter;
+    // removing this because it feels weird as a UX
+
+    if (currentFilterObj.availabilityFilters[0].startsWith(zonLinkPrefix)) {
+        let amazonMarketPrefixed = currentFilterObj.availabilityFilters.shift();
+        let amazonMarket = amazonMarketPrefixed.slice(4);
+        amazonSelect.value = amazonMarket;
+    }
+
+    wideCheckboxes.forEach((checkbox) => {
+        if (currentFilterObj.availabilityFilters.includes(checkbox.value)) {
+            checkbox.checked = true;
+        }
+    });
+
+    setFilter();
 });
