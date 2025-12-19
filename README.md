@@ -11,7 +11,7 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 - [x] Update styles
 - [ ] Bring in new data and iron out the seams
 - [x] Add icons/logos for wide stores
-- [ ] Store user filter prefs in localstorage
+- [x] Store user filter prefs in localstorage
 
 ## Future Improvements:
 - Probably worth it to get an API key and pull the images properly
