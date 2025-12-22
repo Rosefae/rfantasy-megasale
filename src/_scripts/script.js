@@ -167,23 +167,30 @@ wideCheckboxes.forEach((el) => {
     el.addEventListener("change", setFilter);
 });
 
-window.addEventListener("load", () => {
-    const currentFilterObj = JSON.parse(localStorage.getItem("megasaleFilter"));
+const currentFilterObj = JSON.parse(localStorage.getItem("megasaleFilter"));
 
-    // searchInput.value = currentFilterObj.textFilter;
-    // removing this because it feels weird as a UX
+// searchInput.value = currentFilterObj.textFilter;
+// removing this because it feels weird as a UX
 
-    if (currentFilterObj.availabilityFilters[0].startsWith(zonLinkPrefix)) {
-        let amazonMarketPrefixed = currentFilterObj.availabilityFilters.shift();
-        let amazonMarket = amazonMarketPrefixed.slice(4);
-        amazonSelect.value = amazonMarket;
+if (currentFilterObj.availabilityFilters[0].startsWith(zonLinkPrefix)) {
+    let amazonMarketPrefixed = currentFilterObj.availabilityFilters.shift();
+    let amazonMarket = amazonMarketPrefixed.slice(4);
+    amazonSelect.value = amazonMarket;
+}
+
+wideCheckboxes.forEach((checkbox) => {
+    if (currentFilterObj.availabilityFilters.includes(checkbox.value)) {
+        checkbox.checked = true;
     }
-
-    wideCheckboxes.forEach((checkbox) => {
-        if (currentFilterObj.availabilityFilters.includes(checkbox.value)) {
-            checkbox.checked = true;
-        }
-    });
-
-    setFilter();
 });
+
+setFilter();
+
+window.addEventListener("load", () => {
+    const loadingEls = document.querySelectorAll(".loading");
+
+    loadingEls.forEach((el) => {
+        el.classList.add("loaded");
+        el.classList.remove("loading");
+    });
+})
