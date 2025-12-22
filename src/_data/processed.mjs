@@ -1,6 +1,6 @@
 import csv from 'csvtojson';
 
-const rawCsvPath = 'src/_data/clean-2024.csv';
+const rawCsvPath = 'src/_data/clean-2025.csv';
 
 export default async function () {
     // convert csv to json
@@ -13,15 +13,15 @@ export default async function () {
             'title',
             'booksPledged',
             'originalLink',
+            'linkType',
+            'originalAsinType',
+            'originalAsin',
             'asin',
             'cleanLink',
-            'wide',
-            'spfbo',
-            'spfboCohort',
             'direct',
             'directLink',
-            'intlBooks',
             'intl',
+            'wide',
             'imgLink',
             'koboLink',
             'smashwordsLink',

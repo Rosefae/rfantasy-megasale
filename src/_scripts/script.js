@@ -25,6 +25,8 @@ const wideCheckboxes = document.querySelectorAll('.availability__wide input[type
 const booksList = document.querySelector('.books');
 const bookCards = booksList.querySelectorAll('.book');
 
+const bookEmptyMsg = document.querySelector('.empty-message');
+
 const zonLinkPrefix = "zon-"
 
 function getSearchFilter() {
@@ -99,6 +101,17 @@ function isBookMatchAvailability(book, availabilities) {
     return false;
 }
 
+function isAtLeastOneBookShown() {
+    var result = false;
+    for (const el of bookCards) {
+        if (el.checkVisibility()) {
+            result = true;
+            break;
+        }
+    }
+    return result;
+}
+
 function setFilter() {
     const textFilter = getSearchFilter();
     const availabilityFilters = getAvailabilityFilter();
@@ -132,6 +145,13 @@ function setFilter() {
             book.classList.remove("availability-match");
         }
     });
+
+    if (isAtLeastOneBookShown()) {
+        bookEmptyMsg.setAttribute("hidden", true);
+    }
+    else {
+        bookEmptyMsg.removeAttribute("hidden");
+    }
 
     // set current filter configuration to localStorage
     let currentFilterString = JSON.stringify({

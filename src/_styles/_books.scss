@@ -82,6 +82,10 @@
     &__links {
         list-style: none;
         padding: 0;
+
+        &:empty {
+            display: none;
+        }
     }
 
     &__link {
