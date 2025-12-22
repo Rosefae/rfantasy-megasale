@@ -25,6 +25,8 @@ const wideCheckboxes = document.querySelectorAll('.availability__wide input[type
 const booksList = document.querySelector('.books');
 const bookCards = booksList.querySelectorAll('.book');
 
+const bookEmptyMsg = document.querySelector('.empty-message');
+
 const zonLinkPrefix = "zon-"
 
 function getSearchFilter() {
@@ -99,6 +101,17 @@ function isBookMatchAvailability(book, availabilities) {
     return false;
 }
 
+function isAtLeastOneBookShown() {
+    var result = false;
+    for (const el of bookCards) {
+        if (el.checkVisibility()) {
+            result = true;
+            break;
+        }
+    }
+    return result;
+}
+
 function setFilter() {
     const textFilter = getSearchFilter();
     const availabilityFilters = getAvailabilityFilter();
@@ -133,6 +146,13 @@ function setFilter() {
         }
     });
 
+    if (isAtLeastOneBookShown()) {
+        bookEmptyMsg.setAttribute("hidden", true);
+    }
+    else {
+        bookEmptyMsg.removeAttribute("hidden");
+    }
+
     // set current filter configuration to localStorage
     let currentFilterString = JSON.stringify({
         textFilter: textFilter,
@@ -147,23 +167,30 @@ wideCheckboxes.forEach((el) => {
     el.addEventListener("change", setFilter);
 });
 
-window.addEventListener("load", () => {
-    const currentFilterObj = JSON.parse(localStorage.getItem("megasaleFilter"));
+const currentFilterObj = JSON.parse(localStorage.getItem("megasaleFilter"));
 
-    // searchInput.value = currentFilterObj.textFilter;
-    // removing this because it feels weird as a UX
+// searchInput.value = currentFilterObj.textFilter;
+// removing this because it feels weird as a UX
 
-    if (currentFilterObj.availabilityFilters[0].startsWith(zonLinkPrefix)) {
-        let amazonMarketPrefixed = currentFilterObj.availabilityFilters.shift();
-        let amazonMarket = amazonMarketPrefixed.slice(4);
-        amazonSelect.value = amazonMarket;
+if (currentFilterObj.availabilityFilters[0].startsWith(zonLinkPrefix)) {
+    let amazonMarketPrefixed = currentFilterObj.availabilityFilters.shift();
+    let amazonMarket = amazonMarketPrefixed.slice(4);
+    amazonSelect.value = amazonMarket;
+}
+
+wideCheckboxes.forEach((checkbox) => {
+    if (currentFilterObj.availabilityFilters.includes(checkbox.value)) {
+        checkbox.checked = true;
     }
-
-    wideCheckboxes.forEach((checkbox) => {
-        if (currentFilterObj.availabilityFilters.includes(checkbox.value)) {
-            checkbox.checked = true;
-        }
-    });
-
-    setFilter();
 });
+
+setFilter();
+
+window.addEventListener("load", () => {
+    const loadingEls = document.querySelectorAll(".loading");
+
+    loadingEls.forEach((el) => {
+        el.classList.add("loaded");
+        el.classList.remove("loading");
+    });
+})
