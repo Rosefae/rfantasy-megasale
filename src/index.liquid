@@ -28,7 +28,6 @@ tags: index
             </header>
 
             <aside class="filter-container">
-                {% comment %} <button type="button" class="filter-btn"><h2 class="filter-btn__text">Filters</h2></button> {% endcomment %}
                 <h2 class="sr-only">Filters</h2>
                 <form class="filters">
                     <label class="filters__search search">
@@ -44,7 +43,8 @@ tags: index
                         <label class="availability__amazon amazon-select">
                             <span class="amazon-select__label">Amazon Marketplace:</span>
                             <select class="amazon-select__select" name="filter-amazon">
-                                <option value="all" selected>Show All</option>
+                                <option value="default" selected hidden disabled>Show All</option>
+                                <option value="all">Show All</option>
                                 <option value="none">Show None</option>
                                 {%- for market in amazon_marketplaces -%}
                                 <option value="{{market.countryCode}}">Amazon{{market.urlSuffix}}</option>

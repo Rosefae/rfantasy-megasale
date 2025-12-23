@@ -12,7 +12,7 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 - [x] Bring in new data and iron out the seams
 - [x] Add icons/logos for wide stores
 - [x] Store user filter prefs in localstorage
-- [ ] Randomize the order books display in (client-side)
+- [x] Randomize the order books display in (client-side)
 - [x] Add a small on-load transition to hide initial jitter
 - [ ] Move Amazon links to below wide (both book card and filter)?
 - [x] A "nothing found" message if there's nothing found
