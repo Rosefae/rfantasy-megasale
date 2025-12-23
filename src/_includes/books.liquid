@@ -24,7 +24,7 @@
                 </div> {% endcomment %}
                 {%- if book.directLink != "" -%}
                 <div class="book__direct-link book__link" data-market="direct">
-                    <a href="{{book.directLink}}">
+                    <a href="{{book.directLink}}" target="_blank">
                         <span class="book__link-text">Buy <span class="sr-only">{{book.title}} </span>Direct from Author</span>
                     </a>
                 </div>
@@ -47,7 +47,7 @@
                                     {%- endcapture -%}
                                 {%- endif -%}
                                 <li class="book__link book__link-zon" data-market="zon-{{market.countryCode}}">
-                                    <a href="{{url}}">
+                                    <a href="{{url}}" target="_blank">
                                         <span class="sr-only">Get {{book.title}} on </span>
                                         <span class="book__link-text">Amazon{{market.urlSuffix}}</span>
                                         <img src="/_assets/icons/amazon.png" class="book__link-logo" alt=" " aria-hidden="true" />
@@ -59,7 +59,7 @@
                     {%- endif -%}
                     {%- if book.koboLink != "" -%}
                     <li class="book__link book__link-wide" data-market="kobo">
-                        <a href="{{book.koboLink}}">
+                        <a href="{{book.koboLink}}" target="_blank">
                             <span class="sr-only">Get {{book.title}} on </span>
                             <span class="book__link-text">Kobo</span>
                             <img src="/_assets/icons/kobo.png" class="book__link-logo" alt=" " aria-hidden="true" />
@@ -68,7 +68,7 @@
                     {%- endif -%}
                     {%- if book.googleLink != "" -%}
                     <li class="book__link book__link-wide" data-market="google">
-                        <a href="{{book.googleLink}}">
+                        <a href="{{book.googleLink}}" target="_blank">
                             <span class="sr-only">Get {{book.title}} on </span>
                             <span class="book__link-text">Google Play Store</span>
                             <img src="/_assets/icons/google.png" class="book__link-logo" alt=" " aria-hidden="true" />
@@ -77,7 +77,7 @@
                     {%- endif -%}
                     {%- if book.appleLink != "" -%}
                     <li class="book__link book__link-wide" data-market="apple">
-                        <a href="{{book.appleLink}}">
+                        <a href="{{book.appleLink}}" target="_blank">
                             <span class="sr-only">Get {{book.title}} on </span>
                             <span class="book__link-text">Apple Books</span>
                             <img src="/_assets/icons/apple.png" class="book__link-logo" alt=" " aria-hidden="true" />
@@ -86,7 +86,7 @@
                     {%- endif -%}
                     {%- if book.bnLink != "" -%}
                     <li class="book__link book__link-wide" data-market="bn">
-                        <a href="{{book.bnLink}}">
+                        <a href="{{book.bnLink}}" target="_blank">
                             <span class="sr-only">Get {{book.title}} at </span>
                             <span class="book__link-text">Barnes & Noble</span>
                             <img src="/_assets/icons/bn.png" class="book__link-logo" alt=" " aria-hidden="true" />
@@ -95,7 +95,7 @@
                     {%- endif -%}
                     {%- if book.smashwordsLink != "" -%}
                     <li class="book__link book__link-wide" data-market="smashwords">
-                        <a href="{{book.smashwordsLink}}">
+                        <a href="{{book.smashwordsLink}}" target="_blank">
                             <span class="sr-only">Get {{book.title}} on </span>
                             <span class="book__link-text">Smashwords</span>
                             <img src="/_assets/icons/smashwords.png" class="book__link-logo" alt=" " aria-hidden="true" />
