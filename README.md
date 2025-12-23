@@ -16,6 +16,7 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 - [x] Add a small on-load transition to hide initial jitter
 - [ ] Move Amazon links to below wide (both book card and filter)?
 - [x] A "nothing found" message if there's nothing found
+- [ ] Move logic from template to data JS
 
 ## Future Improvements:
 - Probably worth it to get an API key and pull the images properly
