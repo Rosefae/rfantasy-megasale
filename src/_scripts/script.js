@@ -48,9 +48,33 @@ function isBookMatchSearch(book, query) {
 
 function getAvailabilityFilter() {
     var availabilities = [];
+    var wideChecked = false;
+
+    // Wide markets
+    wideCheckboxes.forEach((wide) => {
+        if (wide.checked) {
+            booksList.dataset[wide.value] = true;
+            availabilities.push(wide.value);
+            wideChecked = true;
+        }
+        else {
+            booksList.removeAttribute("data-" + wide.value);
+        }
+    });
 
     // Amazon marketplace
     var amazonMarket = amazonSelect.value;
+
+    if (amazonMarket == "default") {
+        if (wideChecked) {
+            amazonSelect.value = "none";
+            amazonMarket = "none";
+        }
+        else {
+            amazonMarket = "all";
+        }
+    }
+
     if (amazonMarket != "all") {
         booksList.dataset.amazon = amazonMarket;
         availabilities.push(zonLinkPrefix + amazonMarket);
@@ -58,17 +82,6 @@ function getAvailabilityFilter() {
     else {
         booksList.removeAttribute("data-amazon");
     }
-
-    // Wide markets
-    wideCheckboxes.forEach((wide) => {
-        if (wide.checked) {
-            booksList.dataset[wide.value] = true;
-            availabilities.push(wide.value);
-        }
-        else {
-            booksList.removeAttribute("data-" + wide.value);
-        }
-    });
 
     return availabilities;
 }
@@ -168,19 +181,21 @@ const currentFilterObj = JSON.parse(localStorage.getItem("megasaleFilter"));
 // searchInput.value = currentFilterObj.textFilter;
 // removing this because it feels weird as a UX
 
-if (currentFilterObj && currentFilterObj.availabilityFilters.len > 0) {
-    if (currentFilterObj.availabilityFilters[0].startsWith(zonLinkPrefix)) {
-        let amazonMarketPrefixed = currentFilterObj.availabilityFilters.shift();
-        let amazonMarket = amazonMarketPrefixed.slice(4);
-        amazonSelect.value = amazonMarket;
+if (currentFilterObj) {
+    if (currentFilterObj.availabilityFilters.len > 0) {
+        if (currentFilterObj.availabilityFilters[0].startsWith(zonLinkPrefix)) {
+            let amazonMarketPrefixed = currentFilterObj.availabilityFilters.shift();
+            let amazonMarket = amazonMarketPrefixed.slice(4);
+            amazonSelect.value = amazonMarket;
+        }
     }
-}
 
-wideCheckboxes.forEach((checkbox) => {
-    if (currentFilterObj.availabilityFilters.includes(checkbox.value)) {
-        checkbox.checked = true;
-    }
-});
+    wideCheckboxes.forEach((checkbox) => {
+        if (currentFilterObj.availabilityFilters.includes(checkbox.value)) {
+            checkbox.checked = true;
+        }
+    });
+}
 
 setFilter();
 
