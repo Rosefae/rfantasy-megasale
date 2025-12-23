@@ -8,16 +8,6 @@ function backToTop() {
 
 backToTopBtn.addEventListener('click', backToTop);
 
-
-// Filtering
-
-// const filterBtn = document.querySelector('.filter-btn');
-// const filterForm = document.querySelector('form.filters');
-
-// filterBtn.addEventListener("click", () => {
-//     filterForm.classList.toggle("filters--show");
-// })
-
 const searchInput = document.querySelector('input[name="filter-search"]');
 const amazonSelect = document.querySelector('select[name="filter-amazon"]');
 const wideCheckboxes = document.querySelectorAll('.availability__wide input[type="checkbox"]');
