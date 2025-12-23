@@ -8,7 +8,7 @@
                     {%- if book.imgLink != "" -%}
                     <img loading="lazy" src="{{book.imgLink}}" alt=" " aria-hidden="true" />
                     {%- else -%}
-                    <img loading="lazy" src="https://images.amazon.com/images/P/{{book.asin}}.01.LZZZZZZZ.jpg" alt=" " aria-hidden="true" />
+                    <img loading="lazy" src="https://images.amazon.com/images/P/{{book.book1Asin}}.01.LZZZZZZZ.jpg" alt=" " aria-hidden="true" />
                     {%- endif -%}
                 </div>
                 <div class="book__title">
@@ -30,11 +30,24 @@
                 </div>
                 {%- endif -%}
                 <ul class="book__links">
-                    {%- if book.asin != "" -%}
+                    {%- assign asin = book.book1Asin -%}
+                    {%- if book.originalAsinType == "Series" and book.originalAsin != "" -%}
+                        {%- assign asin = book.originalAsin -%}
+                    {%- endif -%}
+
+                    {%- if asin != "" -%}
                         {%- for market in amazon_marketplaces -%}
-                            {% if book.intl or market.countryCode == "us" %}
+                            {% if book.intl or market.countryCode == "us" or market.countryCode == "uk" %}
+                                {%- capture url -%}
+                                    https://www.amazon{{market.urlSuffix}}/dp/{{asin}}
+                                {%- endcapture -%}
+                                {%- if market.countryCode == "nl" -%}
+                                    {%- capture url -%}
+                                        https://www.amazon{{market.urlSuffix}}/dp/{{book.book1Asin}}
+                                    {%- endcapture -%}
+                                {%- endif -%}
                                 <li class="book__link book__link-zon" data-market="zon-{{market.countryCode}}">
-                                    <a href="https://www.amazon{{market.urlSuffix}}/dp/{{book.asin}}">
+                                    <a href="{{url}}">
                                         <span class="sr-only">Get {{book.title}} on </span>
                                         <span class="book__link-text">Amazon{{market.urlSuffix}}</span>
                                         <img src="/_assets/icons/amazon.png" class="book__link-logo" alt=" " aria-hidden="true" />

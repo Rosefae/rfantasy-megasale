@@ -16,7 +16,7 @@ export default async function () {
             'linkType',
             'originalAsinType',
             'originalAsin',
-            'asin',
+            'book1Asin',
             'cleanLink',
             'direct',
             'directLink',
@@ -31,6 +31,10 @@ export default async function () {
         ],
         checkType: true
     }).fromFile(rawCsvPath);
+
+    // processed.forEach((row) => {
+    // TODO: move logic from template to here
+    // });
 
     return processed;
 }
