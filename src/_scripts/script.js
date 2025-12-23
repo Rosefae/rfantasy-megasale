@@ -13,6 +13,12 @@ const amazonSelect = document.querySelector('select[name="filter-amazon"]');
 const wideCheckboxes = document.querySelectorAll('.availability__wide input[type="checkbox"]');
 
 const booksList = document.querySelector('.books');
+// Randomize
+for (var i = booksList.children.length; i >= 0; i--) {
+    let randomIndex = Math.random() * i | 0;
+    booksList.appendChild(booksList.children[randomIndex]);
+}
+
 const bookCards = booksList.querySelectorAll('.book');
 
 const bookEmptyMsg = document.querySelector('.empty-message');
@@ -162,10 +168,12 @@ const currentFilterObj = JSON.parse(localStorage.getItem("megasaleFilter"));
 // searchInput.value = currentFilterObj.textFilter;
 // removing this because it feels weird as a UX
 
-if (currentFilterObj.availabilityFilters[0].startsWith(zonLinkPrefix)) {
-    let amazonMarketPrefixed = currentFilterObj.availabilityFilters.shift();
-    let amazonMarket = amazonMarketPrefixed.slice(4);
-    amazonSelect.value = amazonMarket;
+if (currentFilterObj && currentFilterObj.availabilityFilters.len > 0) {
+    if (currentFilterObj.availabilityFilters[0].startsWith(zonLinkPrefix)) {
+        let amazonMarketPrefixed = currentFilterObj.availabilityFilters.shift();
+        let amazonMarket = amazonMarketPrefixed.slice(4);
+        amazonSelect.value = amazonMarket;
+    }
 }
 
 wideCheckboxes.forEach((checkbox) => {
