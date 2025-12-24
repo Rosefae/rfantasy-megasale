@@ -7,7 +7,6 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 ## To-dos (2025):
 - [x] Add a basic search
 - [x] Separate out wide storefronts in the filter, and generally improve the filtering
-- [ ] Make the search more forgiving of spaces / punctuation (nice to have) (look for fuzzy search libraries/packages?)
 - [x] Update styles
 - [x] Bring in new data and iron out the seams
 - [x] Add icons/logos for wide stores
@@ -16,6 +15,9 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 - [x] Add a small on-load transition to hide initial jitter
 - [ ] Move Amazon links to below wide (both book card and filter)?
 - [x] A "nothing found" message if there's nothing found
+
+## To-dos for 2026:
+- [ ] Make the search more forgiving of spaces / punctuation (nice to have) (look for fuzzy search libraries/packages?)
 - [ ] Move logic from template to data JS
 
 ## Future Improvements:
