@@ -20,11 +20,6 @@ Page listing all the books for the r/fantasy MegaSale because Reddit posts have 
 - [ ] Make the search more forgiving of spaces / punctuation (nice to have) (look for fuzzy search libraries/packages?)
 - [ ] Move logic from template to data JS
 
-## Future Improvements:
-- Probably worth it to get an API key and pull the images properly
-- Lazy load the images?
-- Series pages are causing problems -- use ASIN for first book in series intead of the series page next time
-
 ## Scripts
 
 `npm run serve`: Runs `eleventy --serve`. Compiles templates in `src` into `dist`, as well as copying over `_assets` and `_scripts` as-is. Also watches and serves the site to `localhost:8080`.
