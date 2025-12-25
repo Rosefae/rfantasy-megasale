@@ -37,7 +37,7 @@
 
                     {%- if asin != "" -%}
                         {%- for market in amazon_marketplaces -%}
-                            {% if book.intl or market.countryCode == "us" or market.countryCode == "uk" %}
+                            {% if book.intl or market.countryCode == "us" or market.countryCode == "gb" %}
                                 {%- capture url -%}
                                     https://www.amazon{{market.urlSuffix}}/dp/{{asin}}
                                 {%- endcapture -%}
