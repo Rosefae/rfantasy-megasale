@@ -1,15 +1,16 @@
 <ul class="books">
     {%- for book in processed -%}
-        {%- unless book.linkType == "Missing" -%}
+        {%- unless book.linkType == "Missing" and book.book1Asin == "" -%}
             <li class="book"
                 data-title="{{book.title | downcase}}" data-author="{{book.author | downcase}}"
             >
                 <div class="book__image">
-                    {%- if book.imgLink != "" -%}
+                    {% comment %} {%- if book.imgLink != "" -%}
                     <img loading="lazy" src="{{book.imgLink}}" alt=" " aria-hidden="true" />
                     {%- else -%}
                     <img loading="lazy" src="https://images.amazon.com/images/P/{{book.book1Asin}}.01.LZZZZZZZ.jpg" alt=" " aria-hidden="true" />
-                    {%- endif -%}
+                    {%- endif -%} {% endcomment %}
+                    <img loading="lazy" src="/_assets/covers/{{book.id}}.jpg" alt=" " aria-hidden="true" />
                 </div>
                 <div class="book__title">
                     {{book.title}}
