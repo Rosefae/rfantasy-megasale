@@ -113,7 +113,8 @@ function isBookMatchAvailability(book, availabilities) {
 function isAtLeastOneBookShown() {
     var result = false;
     for (const el of bookCards) {
-        if (el.checkVisibility()) {
+        // if (el.checkVisibility()) {
+        if (getComputedStyle(el).display !== "none") {  // faster than checkVisibility()
             result = true;
             break;
         }
