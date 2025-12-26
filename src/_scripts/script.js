@@ -200,11 +200,23 @@ if (currentFilterObj) {
 
 setFilter();
 
-window.addEventListener("load", () => {
+function loadingAnim() {
     const loadingEls = document.querySelectorAll(".loading");
 
     loadingEls.forEach((el) => {
         el.classList.add("loaded");
         el.classList.remove("loading");
     });
+}
+
+// if loading takes too long, we show everything anyway
+loadingTimeout = setTimeout(() => {
+    console.log("onload event took more than 500ms");
+    loadingAnim();
+}, 500);
+
+window.addEventListener("load", () => {
+    console.log("loaded");
+    clearTimeout(loadingTimeout);   // does nothing if passed ID is invalid
+    loadingAnim();
 })
