@@ -11,7 +11,8 @@
     "scss": "gulp",
     "prodscss": "gulp prodscss",
     "start": "concurrently -k -c green.dim,cyan.dim -s first \"npm:serve\" \"npm:scss\"",
-    "build": "npm run once && npm run prodscss"
+    "minify-js": "terser src/_scripts/script.js -c -m --output dist/_scripts/script.js",
+    "build": "npm run once && npm run prodscss && npm run minify-js"
   },
   "repository": {
     "type": "git",
@@ -37,6 +38,7 @@
     "sass": "^1.63.4"
   },
   "dependencies": {
-    "csvtojson": "^2.0.10"
+    "csvtojson": "^2.0.10",
+    "terser": "^5.44.1"
   }
 }
